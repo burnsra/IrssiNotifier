@@ -2,9 +2,16 @@
 <resources>
 
     <string name="app_name">IrssiNotifier</string>
+    <string name="irssi">Irssi</string>
     <string name="welcome">Welcome</string>
-    <string name="notification_msg_general">"Irssi: "</string>
-    <string name="notification_msg_private">"Irssi (Private): "</string>
+    <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+    <string name="notification_msg_title_general">Irssi: %1$s</string>
+    <string name="notification_msg_title_multiple">%1$d messages</string>
+    <string name="notification_msg_title_private">Irssi (Private): %1$s</string>
+    <string name="notification_msg_text">(%1$s) %2$s</string>
+    <string name="notification_msg_text_general">(%1$s) %2$s</string>
+    <string name="notification_msg_text_multiple">Latest: %1$s</string>
+    <string name="notification_msg_text_private">(%1$s) %2$s</string>
     <string name="selectaccount">To start, select the Google account you want to use:</string>
 
 </resources>
