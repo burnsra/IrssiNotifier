@@ -8,6 +8,7 @@ import org.apache.http.auth.AuthenticationException;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.TabPageIndicator;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
@@ -210,7 +211,7 @@ public class IrssiNotifierActivity extends SherlockActivity {
 		synchronized (channelsLock) {
 	        setContentView(R.layout.main);
 	        
-	        setIndeterminateProgressBarVisibility(!progressBarVisibility); // häx häx
+	        setIndeterminateProgressBarVisibility(!progressBarVisibility);
 	        setIndeterminateProgressBarVisibility(!progressBarVisibility);
 	        
 			pager = (ViewPager) findViewById(R.id.pager);
@@ -223,9 +224,9 @@ public class IrssiNotifierActivity extends SherlockActivity {
 			}
 	        pager.setAdapter(adapter);
 	        
-	        TitlePageIndicator titleIndicator = (TitlePageIndicator)findViewById(R.id.titles);
+	        TabPageIndicator titleIndicator = (TabPageIndicator)findViewById(R.id.titles);
 	        titleIndicator.setViewPager(pager);
-	        titleIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+	        /*titleIndicator.setOnPageChangeListener(new OnPageChangeListener() {
 				public void onPageSelected(int arg0) {
 					if (channels != null) {
 						if (arg0 == 0) arg0 = 1; // TODO megahack 
@@ -247,7 +248,7 @@ public class IrssiNotifierActivity extends SherlockActivity {
 	    	    		break;
 	    			}
 	        	}
-	    	}
+	    	}*/
 		}
 	}
 	

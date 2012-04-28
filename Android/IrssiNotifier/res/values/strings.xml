@@ -3,6 +3,8 @@
 
     <string name="app_name">IrssiNotifier</string>
     <string name="welcome">Welcome</string>
+    <string name="notification_msg_general">"Irssi: "</string>
+    <string name="notification_msg_private">"Irssi (Private): "</string>
     <string name="selectaccount">To start, select the Google account you want to use:</string>
 
 </resources>

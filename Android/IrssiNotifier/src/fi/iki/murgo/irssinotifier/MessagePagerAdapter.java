@@ -82,7 +82,7 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 		LinearLayout messageContainer = (LinearLayout) channelView.findViewById(R.id.message_container);
 		TextView tv = new TextView(ctx);
 		tv.setText("No IRC hilights yet!");
-		tv.setTypeface(Typeface.MONOSPACE);
+		//tv.setTypeface(Typeface.MONOSPACE);
 		
 		messageContainer.addView(tv);
 
@@ -102,8 +102,9 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 
     	View channelView = layoutInflater.inflate(R.layout.channel, null);
 		TextView name = (TextView) channelView.findViewById(R.id.channel_name);
-		name.setText("Feed");
-		name.setTextColor(0xFF60FF60);
+		name.setVisibility(View.GONE);
+		//name.setText("Feed");
+		//name.setTextColor(0xFF60FF60);
 
 		LinearLayout messageContainer = (LinearLayout) channelView.findViewById(R.id.message_container);
 		String lastChannel = "";
@@ -122,14 +123,14 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 				TextView tv = new TextView(ctx);
 				lastChannel = message.getLogicalChannel();
 				
-				tv.setText(lastChannel);
-				tv.setTypeface(Typeface.MONOSPACE);
-				tv.setTextSize(tv.getTextSize() * 1.05f);
+				tv.setText(lastChannel.toUpperCase());
+				//tv.setTypeface(Typeface.MONOSPACE);
+				//tv.setTextSize(tv.getTextSize() * 1.05f);
 				if (lastChannel.startsWith("#")) {
 					// some channels might not start with #, but they're really rare
-					tv.setTextColor(0xFF6060FF);
+					tv.setTextColor(0xFFFFFFFF);
 				} else {
-					tv.setTextColor(0xFFFF6060);
+					tv.setTextColor(0xFFFFFFFF);
 				}				
 				messageContainer.addView(tv);
 			}
@@ -139,7 +140,7 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 			final SpannableString ss = new SpannableString(s);
 			Linkify.addLinks(ss, Linkify.ALL);
 			tv.setText(ss);
-			tv.setTypeface(Typeface.MONOSPACE);
+			//tv.setTypeface(Typeface.MONOSPACE);
 			tv.setAutoLinkMask(Linkify.ALL);
 			tv.setLinksClickable(true);
 			tv.setMovementMethod(LinkMovementMethod.getInstance());
@@ -163,12 +164,12 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 
     	View channelView = layoutInflater.inflate(R.layout.channel, null);
 		TextView name = (TextView) channelView.findViewById(R.id.channel_name);
-		name.setText(channel.getName());
+		name.setText(channel.getName().toUpperCase());
 		if (channel.getName().startsWith("#")) {
 			// some channels might not start with #, but they're really rare
-			name.setTextColor(0xFF6060FF);
+			name.setTextColor(0xFFFFFFFF);
 		} else {
-			name.setTextColor(0xFFFF6060);
+			name.setTextColor(0xFFFFFFFF);
 		}
 	
 		LinearLayout messageContainer = (LinearLayout) channelView.findViewById(R.id.message_container);
@@ -188,7 +189,7 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 			final SpannableString ss = new SpannableString(s);
 			Linkify.addLinks(ss, Linkify.ALL);
 			tv.setText(ss);
-			tv.setTypeface(Typeface.MONOSPACE);
+			//tv.setTypeface(Typeface.MONOSPACE);
 			tv.setAutoLinkMask(Linkify.ALL);
 			tv.setLinksClickable(true);
 			tv.setMovementMethod(LinkMovementMethod.getInstance());
@@ -257,9 +258,9 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 
 	public String getTitle(int position) {
 		if (channels.size() == 0) return "";
-		if (channelMode == ChannelMode.Channels) return channels.get(position).getName();
-		if (position == 0) return "Feed";
-		return channels.get(position - 1).getName(); // if (channelMode == ChannelMode.Both)
+		if (channelMode == ChannelMode.Channels) return channels.get(position).getName().toUpperCase();
+		if (position == 0) return "Feed".toUpperCase();
+		return channels.get(position - 1).getName().toUpperCase(); // if (channelMode == ChannelMode.Both)
 	}
 
 }
