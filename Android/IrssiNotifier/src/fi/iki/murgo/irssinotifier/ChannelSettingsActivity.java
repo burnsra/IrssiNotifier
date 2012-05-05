@@ -28,7 +28,7 @@ public class ChannelSettingsActivity extends ListActivity {
         channels = da.getChannels();
         List<String> channelNames = new ArrayList<String>();
         for (Channel ch : channels)
-            channelNames.add(ch.getName().toUpperCase());
+            channelNames.add(ch.getName().toLowerCase());
 
         TouchListView tlv = (TouchListView) getListView();
         adapter = new IconicAdapter(channelNames);

@@ -129,7 +129,7 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
                 TextView tv = new TextView(ctx);
                 lastChannel = message.getLogicalChannel();
 
-                tv.setText(lastChannel.toUpperCase());
+                tv.setText(lastChannel.toLowerCase());
                 // tv.setTypeface(Typeface.MONOSPACE);
                 // tv.setTextSize(tv.getTextSize() * 1.05f);
                 if (lastChannel.startsWith("#")) {
@@ -172,7 +172,7 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 
         View channelView = layoutInflater.inflate(R.layout.channel, null);
         TextView name = (TextView) channelView.findViewById(R.id.channel_name);
-        name.setText(channel.getName().toUpperCase());
+        name.setText(channel.getName().toLowerCase());
         if (channel.getName().startsWith("#")) {
             // some channels might not start with #, but they're really rare
             name.setTextColor(0xFFFFFFFF);
@@ -266,15 +266,12 @@ public class MessagePagerAdapter extends PagerAdapter implements TitleProvider {
 
     public String getTitle(int position) {
         if (channels.size() == 0)
-            return "";
+            return "ALL FEEDS";
         if (channelMode == ChannelMode.Channels)
-            return channels.get(position).getName().toUpperCase();
+            return channels.get(position).getName().toLowerCase();
         if (position == 0)
-            return "Feed".toUpperCase();
-        return channels.get(position - 1).getName().toUpperCase(); // if
-                                                                   // (channelMode
-                                                                   // ==
-                                                                   // ChannelMode.Both)
+            return "ALL FEEDS";
+        return channels.get(position - 1).getName().toLowerCase();
     }
 
 }

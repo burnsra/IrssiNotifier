@@ -241,19 +241,30 @@ public class IrssiNotifierActivity extends SherlockActivity {
 
             TabPageIndicator titleIndicator = (TabPageIndicator) findViewById(R.id.titles);
             titleIndicator.setViewPager(pager);
-            /*
-             * titleIndicator.setOnPageChangeListener(new OnPageChangeListener()
-             * { public void onPageSelected(int arg0) { if (channels != null) {
-             * if (arg0 == 0) arg0 = 1; // TODO megahack Channel ch =
-             * channels.get(arg0 - 1); // TODO hack if (ch != null) {
-             * channelToView = ch.getName(); } } } public void
-             * onPageScrolled(int arg0, float arg1, int arg2) { } public void
-             * onPageScrollStateChanged(int arg0) { } }); if (channelToView !=
-             * null && channels != null && channels.size() > 1) { for (int i =
-             * 0; i < channels.size(); i++) { if
-             * (channels.get(i).getName().equals(channelToView)) {
-             * pager.setCurrentItem(i); break; } } }
-             */
+
+            titleIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+                public void onPageSelected(int arg0) {
+                    if (channels != null) {
+                        if (arg0 == 0) arg0 = 1; // TODO megahack 
+                        Channel ch = channels.get(arg0 - 1); // TODO hack
+                        if (ch != null) {
+                            channelToView = ch.getName();
+                        }
+                    }
+                }
+
+                public void onPageScrolled(int arg0, float arg1, int arg2) { }
+                public void onPageScrollStateChanged(int arg0) { }
+            });
+
+            if (channelToView != null && channels != null && channels.size() > 1) {
+                for (int i = 0; i < channels.size(); i++) {
+                    if (channels.get(i).getName().equals(channelToView)) {
+                        pager.setCurrentItem(i);
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -306,6 +317,7 @@ public class IrssiNotifierActivity extends SherlockActivity {
         } else if (item.getItemId() == R.id.menu_clear_channel) {
             DataAccess da = new DataAccess(this);
             List<Channel> channels = da.getChannels();
+            Log.d(TAG,"channelToView (clear):" + channelToView);
             Channel channelToClear = null;
             for (Channel ch : channels) {
                 if (ch.getName().equals(channelToView)) {
